@@ -22,6 +22,9 @@ public class Block {
 	
 	@OneToMany(mappedBy = "block", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Course_Block_Faculty> courseBlockFaculty;
+    
+    @OneToMany(mappedBy = "block")
+    private Set<BlockSession> blockSession;
 	
 	public String getBlockName() {
 		return blockName;
@@ -53,5 +56,13 @@ public class Block {
 
 	public void setCourseBlockFaculty(Set<Course_Block_Faculty> courseBlockFaculty) {
 		this.courseBlockFaculty = courseBlockFaculty;
+	}
+
+	public Set<BlockSession> getBlockSession() {
+		return blockSession;
+	}
+
+	public void setBlockSession(Set<BlockSession> blockSession) {
+		this.blockSession = blockSession;
 	}
 }

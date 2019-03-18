@@ -1,7 +1,5 @@
 package com.example.demo.domain;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +14,9 @@ public class MeditationRecord {
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Integer id;
 	
-	private Date date;
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "blockSession_id")
+	private BlockSession blockSession;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "student_id")
@@ -30,20 +30,20 @@ public class MeditationRecord {
     @JoinColumn(name = "typeTM_id")
 	private TypeTM typeTM;
 	
+	public BlockSession getBlockSession() {
+		return blockSession;
+	}
+	
+	public void setgetBlockSession(BlockSession blockSession) {
+		this.blockSession = blockSession;
+	}
+	
 	public Student getStudent() {
 		return student;
 	}
 	
 	public void setStudent(Student student) {
 		this.student = student;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public Place getPlace() {

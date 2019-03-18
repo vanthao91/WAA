@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Student extends Person {
 	private String studentID;	
+	private Date entryDate;
 	
 	@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<MeditationRecord> meditationRecord;
@@ -38,5 +40,13 @@ public class Student extends Person {
 
 	public void setStudentCourse(Set<Student_Course> studentCourse) {
 		this.studentCourse = studentCourse;
+	}
+
+	public Date getEntryDate() {
+		return entryDate;
+	}
+
+	public void setEntryDate(Date entryDate) {
+		this.entryDate = entryDate;
 	}
 }
