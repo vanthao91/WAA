@@ -12,6 +12,7 @@ public class LoginController {
 	public String getLoginForm() {
 //		ModelAndView modelAndView = new ModelAndView();
 //		modelAndView.setViewName("login");
+		System.out.println("Test");
 		return "login";
 	}
 }
