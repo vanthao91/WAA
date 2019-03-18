@@ -16,7 +16,6 @@ import com.example.demo.service.UserService;
 
 @Controller
 public class LoginController {
-
     @Autowired
     private UserService userService;
 
@@ -69,6 +68,5 @@ public class LoginController {
 	 * "adminMessage","Content Available Only for Users with Admin Role");
 	 * modelAndView.setViewName("admin/home"); return modelAndView; }
 	 */
-
 
 }
