@@ -23,7 +23,7 @@ public class User {
 	private Boolean active;
 	
 	@OneToOne(cascade = CascadeType.ALL) 
-	@JoinColumn(name = "user_id", nullable = false) 
+	@JoinColumn(name = "person_id")//, nullable = false) 
 	private Person person;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

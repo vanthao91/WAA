@@ -4,33 +4,17 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Student extends Person {
-	private String barCode;
 	private String studentID;	
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_block_faculty_id"))
-    private Set<Course_Block_Faculty> courseBlockFaculty;
 	
 	@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<MeditationRecord> meditationRecord;
 	
-	@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(mappedBy = "student")
     private Set<Student_Course> studentCourse;
-	
-	public String getBarCode() {
-		return barCode;
-	}
-	
-	public void setBarCode(String barCode) {
-		this.barCode = barCode;
-	}
 
 	public String getStudentID() {
 		return studentID;
@@ -38,14 +22,6 @@ public class Student extends Person {
 
 	public void setStudentID(String studentID) {
 		this.studentID = studentID;
-	}
-
-	public Set<Course_Block_Faculty> getCourseBlockFaculty() {
-		return courseBlockFaculty;
-	}
-
-	public void setCourseBlockFaculty(Set<Course_Block_Faculty> courseBlockFaculty) {
-		this.courseBlockFaculty = courseBlockFaculty;
 	}
 
 	public Set<MeditationRecord> getMeditationRecord() {

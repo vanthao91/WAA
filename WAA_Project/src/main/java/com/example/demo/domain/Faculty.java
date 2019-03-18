@@ -8,20 +8,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Faculty extends Person {
-	private String barCode;
 	private String facultyNumber;
 	
 	@OneToMany(mappedBy = "faculty", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Course_Block_Faculty> courseBlockFaculty;
 	
-	public String getBarCode() {
-		return barCode;
-	}
-	
-	public void setBarCode(String barCode) {
-		this.barCode = barCode;
-	}
-
 	public String getFacultyNumber() {
 		return facultyNumber;
 	}

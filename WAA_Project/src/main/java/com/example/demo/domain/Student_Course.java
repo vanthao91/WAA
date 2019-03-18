@@ -1,7 +1,5 @@
 package com.example.demo.domain;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,13 +14,14 @@ public class Student_Course {
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Integer id;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "student_id")
-    private Set<Student> student;
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_ID")
+    private Student student;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseBlockFaculty_id")
-    private Set<Course_Block_Faculty> courseBlockFaculty;
+    private Course_Block_Faculty courseBlockFaculty;
     
 	private Boolean active;
 
@@ -34,19 +33,19 @@ public class Student_Course {
 		this.active = active;
 	}
 	
-	public Set<Student> getStudent() {
+	public Student getStudent() {
 		return student;
 	}
 
-	public void setStudent(Set<Student> student) {
+	public void setStudent(Student student) {
 		this.student = student;
 	}
 
-    public Set<Course_Block_Faculty> getCourseBlockFaculty() {
+    public Course_Block_Faculty getCourseBlockFaculty() {
 		return courseBlockFaculty;
 	}
 
-	public void setCourseBlockFaculty(Set<Course_Block_Faculty> courseBlockFaculty) {
+	public void setCourseBlockFaculty(Course_Block_Faculty courseBlockFaculty) {
 		this.courseBlockFaculty = courseBlockFaculty;
 	}
 	

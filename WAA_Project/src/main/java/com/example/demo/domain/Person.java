@@ -14,7 +14,8 @@ public class Person {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Integer id;
-	
+
+	private String barCode;
 	private String firstName;
 	private String lastName;
 	private Date birthday;
@@ -22,6 +23,14 @@ public class Person {
 	
 	@OneToOne(mappedBy = "person", cascade = CascadeType.ALL) 
 	private User user;
+	
+	public String getBarCode() {
+		return barCode;
+	}
+	
+	public void setBarCode(String barCode) {
+		this.barCode = barCode;
+	}
 	
 	public String getFirstName() {
 		return firstName;

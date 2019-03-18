@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,9 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Integer id;
 	
+	@Column(name="courseID")
 	private String courseID;
+	@Column(name="courseName")
 	private String courseName;
 	
 	@OneToMany(mappedBy = "course", cascade = {CascadeType.PERSIST, CascadeType.MERGE})

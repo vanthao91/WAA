@@ -29,7 +29,7 @@ public class Course_Block_Faculty {
     @JoinColumn(name = "faculty_id")
 	private Faculty faculty;
 	
-	@OneToMany(mappedBy = "courseBlockFaculty", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(mappedBy = "courseBlockFaculty")
     private Set<Student_Course> studentCourse;
 	
 	public Course getCourse() {
