@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,9 +10,13 @@
 Log in success.....
 This is home page
 
-<!-- <form th:action="/logout" method="get">
+<h3><span class="text-success" th:utext="${user}"></span></h3>
+
+<h4><span class="text-success" th:utext="${messageRole}"></span></h4>
+
+<form th:action="@{/logout}" method="get">
     <button class="btn btn-md btn-warning btn-block" type="Submit">Log out</button>
-</form> -->
+</form>
 
 </body>
 </html>
