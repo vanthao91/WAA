@@ -117,11 +117,11 @@ public class FileSystemStorageService implements StorageService
     /**
      * 删除upload-dir目录所有文件
      */
-//    @Override
-//    public void deleteAll()
-//    {
-//        FileSystemUtils.deleteRecursively(rootLocation.toFile());
-//    }
+    @Override
+    public void deleteAll()
+    {
+        FileSystemUtils.deleteRecursively(rootLocation.toFile());
+    }
  
     /**
      * 初始化
@@ -139,9 +139,9 @@ public class FileSystemStorageService implements StorageService
         }
     }
 
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void deleteAll() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }
