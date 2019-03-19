@@ -1,10 +1,21 @@
-INSERT INTO Role (id, roleId, role_Name) VALUES (1, 'admin', 'Admin Role');
-INSERT INTO Role (id, roleId, role_Name) VALUES (2, 'faculty', 'Faculty Role');
-INSERT INTO Role (id, roleId, role_Name) VALUES (3, 'student', 'Student Role');
+create table if not exists persistent_logins ( 
+  username varchar_ignorecase(100) not null, 
+  series varchar(64) primary key, 
+  token varchar(64) not null, 
+  last_used timestamp not null
+);
+
+INSERT INTO Role (id, roleId, role_Name) VALUES (1, 'admin', 'ROLE_ADMIN');
+INSERT INTO Role (id, roleId, role_Name) VALUES (2, 'faculty', 'ROLE_FACULTY');
+INSERT INTO Role (id, roleId, role_Name) VALUES (3, 'student', 'ROLE_STUDENT');
 
 INSERT INTO User (id, username, password, active) VALUES (1, 'admin', '$2a$10$S/wlXEo/APzf.Sn1cO2p4.V12EJmaw.uzrHelMvkpuahjmHWnSafe', TRUE);
+INSERT INTO User (id, username, password, active) VALUES (2, 'student', '$2a$10$XUwKVni35j/TtWuzZga2/earbsXhGNc.M70Pi8r0vBct.ASdGdZYG', TRUE);
+INSERT INTO User (id, username, password, active) VALUES (3, 'faculty', '$2a$10$p5PqF32hRzlMKodJ6VnRZertG2pRs5aYTZMXLaRnBtwqdZCpCATX6', TRUE);
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
+INSERT INTO user_role (user_id, role_id) VALUES (3, 3);
 
 INSERT INTO Course (id, courseId, course_Name) VALUES (1, 'CS401', 'Modern Programming Practice');
 INSERT INTO Course (id, courseId, course_Name) VALUES (2, 'CS545', 'Web Application Architecture and Framework');
