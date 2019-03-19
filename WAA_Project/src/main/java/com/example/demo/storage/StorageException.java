@@ -1,4 +1,4 @@
-package storage;
+package com.example.demo.storage;
 
 public class StorageException extends RuntimeException{
 	public StorageException(String message) {

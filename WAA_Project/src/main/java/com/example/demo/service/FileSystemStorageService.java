@@ -1,4 +1,4 @@
-package service;
+package com.example.demo.service;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -7,8 +7,8 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import storage.StorageException;
-import storage.StorageFileNotFoundException;
+import com.example.demo.storage.StorageException;
+import com.example.demo.storage.StorageFileNotFoundException;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -117,11 +117,11 @@ public class FileSystemStorageService implements StorageService
     /**
      * 删除upload-dir目录所有文件
      */
-    @Override
-    public void deleteAll()
-    {
-        FileSystemUtils.deleteRecursively(rootLocation.toFile());
-    }
+//    @Override
+//    public void deleteAll()
+//    {
+//        FileSystemUtils.deleteRecursively(rootLocation.toFile());
+//    }
  
     /**
      * 初始化
@@ -138,4 +138,10 @@ public class FileSystemStorageService implements StorageService
             throw new StorageException("Could not initialize storage", e);
         }
     }
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
 }
