@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-Log in success.....
-This is home page
+	Log in success..... This is home page
 
-<h3><span class="text-success" th:utext="${user}"></span></h3>
+	<h3>
+		<span class="text-success" th:utext="${user}"></span>
+	</h3>
 
-<h4><span class="text-success" th:utext="${messageRole}"></span></h4>
+	<h4>
+		<span class="text-success" th:utext="${messageRole}"></span>
+	</h4>
 
-<form th:action="@{/logout}" method="get">
-    <button class="btn btn-md btn-warning btn-block" type="Submit">Log out</button>
-</form>
+	<label for="person">Person </label>
+	<select id="dropPerson" size=10>
+		<option value="0">--Select roles--</option>
+		<option th:each="per : ${persons}" th:value="${per.barCode}"
+			th:text="${per.firstName}"></option>
+	</select>
+
+	<form th:action="@{/logout}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Log out</button>
+	</form>
 
 </body>
 </html>

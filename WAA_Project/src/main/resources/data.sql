@@ -210,11 +210,17 @@ INSERT INTO TypeTM (id, from_time, to_time, typeid, type_name) VALUES (1, '7:55:
 INSERT INTO TypeTM (id, from_time, to_time, typeid, type_name) VALUES (2, '8:45:00', '9:15:00', 'AM', 'Morning');
 INSERT INTO TypeTM (id, from_time, to_time, typeid, type_name) VALUES (3, '13:30:00', '15:00:00', 'DC', 'DC');
 
-INSERT INTO Person (dtype, id, bar_code, first_Name, last_Name, birthDay, gender, entry_date, studentId, facultyId) VALUES ('student', 1, '123456', 'Thao', 'Dao', '1991-09-10', 'F', '2018-08-08', '986640', null);
-INSERT INTO Person (dtype, id, bar_code, first_Name, last_Name, birthDay, gender, entry_date, studentId, facultyId) VALUES ('student', 2, '123457', 'Trinh', 'Nguyen', '1988-12-14', 'M', '2018-08-08', '986641', null);
-INSERT INTO Person (dtype, id, bar_code, first_Name, last_Name, birthDay, gender, entry_date, studentId, facultyId) VALUES ('student', 3, '123458', 'Dang', 'Nguyen', '1985-09-10', 'F', '2018-08-08', '986642', null);
+INSERT INTO Person (id, bar_code, first_Name, last_Name, birthDay, gender) VALUES (1, '123456', 'Rujuan', 'Xing', '1991-09-10', 'F');
+INSERT INTO Person (id, bar_code, first_Name, last_Name, birthDay, gender) VALUES (2, '123457', 'Mrudula', 'Mukadam', '1988-12-14', 'F');
+INSERT INTO Person (id, bar_code, first_Name, last_Name, birthDay, gender) VALUES (3, '123458', 'Renuka', 'Mohanraj', '1985-09-10', 'F');
+INSERT INTO Person (id, bar_code, first_Name, last_Name, birthDay, gender) VALUES (4, '123458', 'Gregory', 'Guthrie', '1985-09-10', 'M');
+INSERT INTO Person (id, bar_code, first_Name, last_Name, birthDay, gender) VALUES (5, '123458', 'Bruce', 'Lester', '1985-09-10', 'M');
 
-INSERT INTO Person (dtype, id, bar_code, first_Name, last_Name, birthDay, gender, entry_date, studentId, facultyId) VALUES ('faculty', 4, '123459', '', 'Guthrie', null, 'F', null, null, '1001');
-INSERT INTO Person (dtype, id, bar_code, first_Name, last_Name, birthDay, gender, entry_date, studentId, facultyId) VALUES ('faculty', 5, '123460', '', 'Shrestha', null, 'F', null, null, '1002');
-INSERT INTO Person (dtype, id, bar_code, first_Name, last_Name, birthDay, gender, entry_date, studentId, facultyId) VALUES ('faculty', 6, '123461', '', 'Xing', null, 'F', null, null, '1003');
+INSERT INTO Faculty (id, facultyid) VALUES (1, '100001');
+INSERT INTO Faculty (id, facultyid) VALUES (2, '100002');
+INSERT INTO Faculty (id, facultyid) VALUES (3, '100003');
+INSERT INTO Faculty (id, facultyid) VALUES (4, '100004');
+INSERT INTO Faculty (id, facultyid) VALUES (5, '100005');
 
+INSERT INTO Student (id, entry_date, studentid) VALUES (1, '2018-08-08', '986647');
+INSERT INTO Student (id, entry_date, studentid) VALUES (2, '2018-08-08', '986648');
