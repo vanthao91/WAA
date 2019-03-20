@@ -1,23 +1,22 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Attendance;
 import com.example.demo.domain.BlocksToDisplay;
 import com.example.demo.domain.CourseToDisplay;
 import com.example.demo.service.AttendanceService;
 import com.example.demo.service.BlockService;
 import com.example.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 
 @Controller
-public class FacultyController {
+public class StudentController {
 
 	@Autowired
 	private BlockService blockService;
@@ -28,32 +27,35 @@ public class FacultyController {
 	@Autowired
 	private AttendanceService attendanceService;
 
-	@RequestMapping(value = "/faculty/blockList")
-	public String facultyCourseList(Model model, Authentication authentication) {
+	@RequestMapping(value = "/block/student/{studentId}/{blockid}")
+	public String facultyCourseList(@PathVariable("studentId") String studentId,
+									@PathVariable("blockid") long cofferingid, Model model) {
 
 		List<BlocksToDisplay> blocks = blockService.findallBlocks();
 
 
+
 		model.addAttribute("blockList", blocks);
-		return "attendance/facultyBlockList";
+		return "attendance/studentBlockList";
 	}
 
 
-	@RequestMapping(value = "/faculty/courseList")
-	public String facultyBlock(Model model, Authentication authentication) {
+	@RequestMapping(value = "/course/student/{studentId}/{courseid}", method = RequestMethod.GET)
+	public String facultyBlock(@PathVariable("studentId") String studentId,
+							   @PathVariable("courseid") long cofferingid, Model model) {
 
 		List<CourseToDisplay> courses = courseService.findallCourse();
 
 		model.addAttribute("courseList", courses);
-		return "attendance/facultyCourseList";
+		return "attendance/studentCourseList";
 	}
 
-	@RequestMapping(value = "/faculty/courseList/{id}")
-	public String facultyAttendance(@PathVariable Long id,  Model model) {
 
-		Attendance attendance = attendanceService.findAttendanceByID(id);
+	@RequestMapping(value = "/attendance/student/{studentId}/{cofferingid}", method = RequestMethod.GET)
+	public String getAttendanceRecordsStudent(@PathVariable("studentId") String studentId,
+											  @PathVariable("cofferingid") long cofferingid, Model model) {
 
-		model.addAttribute("attendances", attendance);
-		return "attendance/facultyAttendanceList";
+
+		return "attendance/studentAttendanceList";
 	}
 }

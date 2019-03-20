@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <div>
+            <span style="font-size: 1.5em">List of Customers</span>
+            <span style="float:right;">
+                <a class="btn btn-outline-success btn-lg" href="/customers/new">Register New Faculty</a>
+            </span>
+        </div>
+        <p>&nbsp;</p>
+        <table class="table table-hover">
+            <thead>
+                <tr >
+                    <th scope="col">#</th>
+                    <th scope="col">Block ID</th>
+                    <th scope="col">Block Name</th>
+                    <th scope="col">GetCourses</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="blocks,iterStat : ${blockList}" th:class="${iterStat.odd}? 'odd'">
+                    <th scope="row" th:text="${iterStat.count}"></th>
+                    <td th:text="${blocks.getBlockID()}"></td>
+                    <td th:text="${blocks.getBlockName()}"></td>
+                    <td th:text="${blocks.getOfferedCourse()}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+    
+</body>
+</html>
