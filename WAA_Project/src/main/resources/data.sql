@@ -6,9 +6,9 @@ create table if not exists persistent_logins (
 );
 
 ---------------------------------------------------------------------------------------------
-INSERT INTO Role (id, roleId, role_Name) VALUES (1, 'admin', 'ROLE_ADMIN');
-INSERT INTO Role (id, roleId, role_Name) VALUES (2, 'faculty', 'ROLE_FACULTY');
-INSERT INTO Role (id, roleId, role_Name) VALUES (3, 'student', 'ROLE_STUDENT');
+INSERT INTO Role (id, role_Name) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO Role (id, role_Name) VALUES (2, 'ROLE_FACULTY');
+INSERT INTO Role (id, role_Name) VALUES (3, 'ROLE_STUDENT');
 
 ---------------------------------------------------------------------------------------------
 INSERT INTO User (id, username, password, active) VALUES (1, 'admin', '$2a$10$S/wlXEo/APzf.Sn1cO2p4.V12EJmaw.uzrHelMvkpuahjmHWnSafe', TRUE);
@@ -17,8 +17,9 @@ INSERT INTO User (id, username, password, active) VALUES (3, 'faculty', '$2a$10$
 
 ---------------------------------------------------------------------------------------------
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
-INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
-INSERT INTO user_role (user_id, role_id) VALUES (3, 3);
+INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
+INSERT INTO user_role (user_id, role_id) VALUES (3, 2);
 
 ---------------------------------------------------------------------------------------------
 INSERT INTO Course (id, courseId, course_Name) VALUES (1, 'CS401', 'Modern Programming Practice');
