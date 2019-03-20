@@ -211,6 +211,7 @@ public class FileSystemStorageService implements StorageService
 						System.out.println("==============");
     		        	System.out.println("curdate: " + curDate);
     		        	BlockSession blockSession = blockSessionRepository.findBySession(curDate);
+    		        	newObject.setDate(curDate);
     		        	newObject.setPlace(place);
     		        	newObject.setTypeTM(typeTM);
     		        	newObject.setBlockSession(blockSession);
