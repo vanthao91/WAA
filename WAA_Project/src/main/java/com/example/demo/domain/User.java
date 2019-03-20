@@ -11,14 +11,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import com.example.demo.validation.UserName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@JsonIgnore
 	private Integer id;
-
+	
+	@NotBlank
+	@Size(min = 4, max = 50, message = "{user.username.size}")
+	@UserName
 	private String username;
+	
+	@NotBlank
 	private String password;
 	private Boolean active;
 	

@@ -24,9 +24,17 @@ public class Person {
 	private Date birthday;
 	private String gender;
 	
-	@OneToOne(mappedBy = "person", cascade = CascadeType.ALL) 
-	private User user;
+//	@OneToOne(mappedBy = "person", cascade = CascadeType.ALL) 
+//	private User user;
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getBarCode() {
 		return barCode;
 	}
@@ -67,11 +75,11 @@ public class Person {
 		this.gender = gender;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setGender(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 }

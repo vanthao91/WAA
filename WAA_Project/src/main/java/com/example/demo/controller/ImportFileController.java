@@ -43,7 +43,7 @@ public class ImportFileController {
 //		return "importFile";
 //	}
 	
-	 @GetMapping("/importFile")
+	 @GetMapping("/admin/importFile")
 	    public String listUploadedFiles(@ModelAttribute("textFile") TextFile textFile, Model model) throws IOException {
 	        model.addAttribute("files", storageService.loadAll().map(
 	                path -> MvcUriComponentsBuilder.fromMethodName(ImportFileController.class,
@@ -65,7 +65,7 @@ public class ImportFileController {
 	                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	    }
 	 
-	    @PostMapping("/importFile")
+	    @PostMapping("/admin/importFile")
 	    public String handleFileUpload(@Valid @ModelAttribute("textFile") TextFile textFile, BindingResult bindingResult,
 	            RedirectAttributes redirectAttributes){
 	    	MultipartFile file = textFile.getFile();

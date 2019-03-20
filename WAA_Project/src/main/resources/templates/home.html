@@ -17,14 +17,14 @@
 		<span class="text-success" th:utext="${messageRole}"></span>
 	</h4>
 
-	<label for="person">Person </label>
-	<select id="dropPerson" size=10>
-		<option value="0">--Select roles--</option>
-		<option th:each="per : ${persons}" th:value="${per.barCode}"
-			th:text="${per.firstName}"></option>
-	</select>
-	<form th:action = "@{/importFile}" method = "get">
+	<form th:action = "@{/admin/importFile}" method = "get">
 		<button class = "goImportFile" type = "Submit">Import File</button>
+	</form>
+	<form th:action = "@{/admin/registration}" method = "get">
+		<button class = "goRegistration" type = "Submit">Registration</button>
+	</form>
+	<form th:action = "@{/admin/report}" method = "get">
+		<button class = "goAdminReport" type = "Submit">Admin Report</button>
 	</form>
 	<form th:action="@{/logout}" method="get">
 		<button class="btn btn-md btn-warning btn-block" type="Submit">Log out</button>
