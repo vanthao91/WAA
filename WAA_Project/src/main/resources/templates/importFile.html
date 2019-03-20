@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Import File</title>
+</head>
 <body>
-<div th:if="${message}">
+<div class="container">
+	<div th:if="${message}">
 		<h2 th:text="${message}"></h2>
 	</div>
- 
-	<div>
-		<form method="POST" enctype="multipart/form-data" th:action="@{/importFile}" th:object="${textFile}">
-
-			<table>
-				<tr><td>File to upload:</td><td><input type="file" name="file" th:field="*{file}"  />
-				<p th:if="${#fields.hasErrors('file')}" th:errors="*{file}" th:errorclass="fieldError">Incorrect date</p>
-				
-				</td></tr>
-				
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-			</table>
-		</form>
+	<table class="table">
+    <thead>
+      <tr>
+        <th>	
+        File to upload
 		
-		<form th:action = "@{/home}" method = "get">
-			<button class = "goHome" type = "Submit">Go to Home page</button>
-		</form>
-	</div>
- 
-	<div>
-		<ul>
+		</th>
+      </tr>
+      </thead>
+      <tbody>
+      	<tr>
+      	<td><form method="POST" enctype="multipart/form-data" th:action="@{/importFile}" th:object="${textFile}">
+		<input type="file" name="file" th:field="*{file}"  />
+				<p th:if="${#fields.hasErrors('file')}" th:errors="*{file}" th:errorclass="fieldError"></p>
+				<button type="submit" class="btn btn-link btn-sm" >Upload</button>
+		</form></td>
+      	</tr>
+      	
+      	<tr>
+      	<td>
+      	<ul>
 			<li th:each="file : ${files}">
 				<a th:href="${file}" th:text="${file}" ></a>
 			</li>
 		</ul>
-	</div>
-	
+      	</td>
+      	</tr>
+      	<tr>
+      	<td>
+      	      	<form th:action = "@{/home}" method = "get">
+			<button class="btn btn-link btn-sm" type = "Submit">Go to Home page</button>
+		</form>
 
+      	</td>
+      	</tr>
+      </tbody>
+ </table>
+ </div>
 </body>
 </html>

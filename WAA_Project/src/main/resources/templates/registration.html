@@ -3,93 +3,80 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<<<<<<< HEAD
-    <title>Registration Form</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/static/css/registration.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-=======
-<title>Registration Form</title>
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="/resources/js/ajax.js"></script>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" th:src="@{/js/ajax.js}"></script>
-<!--  <link rel="stylesheet" type="text/css"
-	th:href="@{/css/registration.css}" />-->
-
->>>>>>> fd64b7e56d8d0af6abc871e06dbb9308bfb7a695
-</head>
+    <meta charset="ISO-8859-1">
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <title>Registration Form</title>
 <body>
 	<div id="result">
 		<div id="errors"></div>
 		<div id="success"></div>
 	</div>
-	<form th:action="@{/home}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Home Page</button>
-	</form>
-
-	<div id="global">
-
-		<form id="registrationForm" action="#" th:action="@{/admin/registration}"
-			th:object="${user}" method="post">
-			<fieldset>
-				<legend>
-					<span th:text="#{user.form.title}">Add a Employee</span>
-				</legend>
-				<ul th:if="${#fields.hasErrors('*')}">
-					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input
-						is incorrect</li>
-				</ul>
-				<p>
-					<label for="username"><span
-						data-th-text="#{user.form.username}">User Name</span></label> <input
-						type="text" id="username" th:field="*{username}" />
-					<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
-						th:errorclass="fieldError">Incorrect username</p>
-				</p>
-				<p>
-					<label for="password"><span th:text="#{user.form.password}">Password:
-					</span></label> <input type="password" th:field="*{password}" />
-					<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-						th:errorclass="fieldError">Incorrect password</p>
-				</p>
-				<p>
-					<label for="active"><span th:text="#{user.form.active}">Active:
-					</span></label> <input type="checkbox" th:field="*{active}" th:value="true"/>
-				</p>
-
-				<p>
-					<label for="roles">Roles </label> <select th:field="*{roles}"
+	<div class="container">
+<!-- 	<ul th:if="${#fields.hasErrors('*')}"> -->
+<!-- 	<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+	</ul> -->
+	
+	<h2 th:text="#{user.form.title}" class="text-center">Add a Employee</h2>
+	
+	<form action="#" th:action="@{/admin/registration}"
+			th:object="${user}" method="post" class="form-horizontal">	
+	<div class="form-group">
+		<label class="control-label col-sm-2"><span data-th-text="#{user.form.username}">User Name</span></label> 
+		<div class="col-sm-8">
+		<input class="form-control" type="text" id="username" th:field="*{username}" />
+		<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:errorclass="fieldError">Incorrect Username</span>
+		</div>
+		</div>
+	<div class="form-group">
+					<label class="control-label col-sm-2" for="password"><span th:text="#{user.form.password}">Password:
+					</span></label> 
+					<div class="col-sm-8">
+					<input class="form-control" type="password" th:field="*{password}" />
+					<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+						th:errorclass="fieldError">Incorrect password</span>
+					</div>
+		</div>
+	<div class="form-group">
+					<label class="control-label col-sm-2" for="active"><span th:text="#{user.form.active}">Active:
+					</span></label> 
+					<div class="col-sm-10">
+					<input class="checkbox" type="checkbox" th:field="*{active}" th:value="true"/>
+	</div>
+	</div>
+	<div class="form-group">			
+					<label class="control-label col-sm-2" for="roles">Roles </label> 
+					<div class="col-sm-10">
+					<select th:field="*{roles}"
 						id="dropRoles" size="4" multiple="true">
 						<!--    <option value="0">--Select roles--</option>-->
 						<option th:each="role : ${roles}" th:value="${role.id}"
 							th:text="${role.roleName}"></option>
 					</select>
-
-				</p>
-
-				<p>
-					<label for="person">Person </label> <select th:field="*{person}"
+	</div>
+	</div>			
+	<div class="form-group">	
+					<label class="control-label col-sm-2" for="person">Person </label> 
+					<div class="col-sm-10">
+					<select th:field="*{person}"
 						id="dropPerson" size=10>
 						<option value="0">--Select person--</option>
 						<option th:each="per : ${persons}" th:value="${per.id}"
 							th:text="${per.firstName}"></option>
 					</select>
-
-				</p>
-
-
-				<input type="submit" id="submitNewUserBtn" value="Create User" />
-			</fieldset>
-		</form>
 	</div>
+	</div>
+	<div class="col-md-8 col-sm-offset-2 text-center">
+				<button type="submit"  class="btn btn-default btn-lg">Create User</button></div>
+		</form>
+		<div class="col-md-8 col-sm-offset-2 text-center">
+		<form th:action="@{/home}" method="get">
+		<button class="btn btn-link btn-lg" type="Submit">Go To Home Page</button>
+		</form>
+		</div>
+		</div>
 </body>
 </html>
