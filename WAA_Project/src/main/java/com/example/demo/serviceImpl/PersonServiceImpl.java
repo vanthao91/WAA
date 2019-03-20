@@ -19,6 +19,21 @@ public class PersonServiceImpl implements PersonService {
 	public List<Person> getAll() {
 		// TODO Auto-generated method stub
 		return personRepository.findAll();
+		
 	}
+	@Override
+	public Person findByBarCode(String barcode) {
+		// TODO Auto-generated method stub
+		List<Person> result =  (List<Person>)  personRepository.findByBarCode(barcode);	
+		
+//		if(result != null && !result.isEmpty()) {
+//			System.out.println("result: " + result);
+//			return result.get(0);
+//		}else {
+//			return null;
+//		}
+		return 	(result != null && !result.isEmpty() ) ? result.get(0) : null;
+	}
+
 
 }

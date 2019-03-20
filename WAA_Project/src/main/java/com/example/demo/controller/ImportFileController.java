@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
@@ -15,12 +16,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -64,8 +67,18 @@ public class ImportFileController {
 	        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 	                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	    }
+<<<<<<< Updated upstream
 	 
 	    @PostMapping("/admin/importFile")
+=======
+	    
+	    @PostMapping(value = "/importFile", consumes = "text/csv")
+	    public void uploadSimple(@RequestBody InputStream body) {
+	        //repository.saveAll(CsvUtils.read(User.class, body);
+	    }
+	    
+	    @PostMapping("/importFile")
+>>>>>>> Stashed changes
 	    public String handleFileUpload(@Valid @ModelAttribute("textFile") TextFile textFile, BindingResult bindingResult,
 	            RedirectAttributes redirectAttributes){
 	    	MultipartFile file = textFile.getFile();
@@ -74,10 +87,20 @@ public class ImportFileController {
 	    		
 	    		return "importFile";
 	    	}
-	        storageService.store(file);
-	        redirectAttributes.addFlashAttribute("message",
-	                "You successfully uploaded " + file.getOriginalFilename() + "!");
-	   
+	    	 try {
+		        storageService.store(file);
+		        String textFilename = StringUtils.cleanPath(file.getOriginalFilename());
+		        Resource fileResource = storageService.loadAsResource(textFilename);
+		        InputStream fsStream = fileResource.getInputStream();
+		        String results = storageService.readFromInputStream(fsStream);
+				redirectAttributes.addFlashAttribute("message",
+			                "You successfully uploaded " + file.getOriginalFilename() + "!");
+					
+			} 
+	       catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        return "redirect:/importFile";
 	         
 	    }
