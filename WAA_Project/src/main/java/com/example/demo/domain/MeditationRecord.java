@@ -38,7 +38,7 @@ public class MeditationRecord {
 		return blockSession;
 	}
 	
-	public void setgetBlockSession(BlockSession blockSession) {
+	public void setBlockSession(BlockSession blockSession) {
 		this.blockSession = blockSession;
 	}
 	

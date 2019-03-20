@@ -5,12 +5,17 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student extends Person {
-	private String studentID;	
-	private Date entryDate;
+	private String studentID;
+	
+	@OneToOne(cascade = CascadeType.ALL) 
+	@JoinColumn(name = "entry_id")//, nullable = false) 
+	private Entry entry;
 	
 	@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<MeditationRecord> meditationRecord;
@@ -42,11 +47,11 @@ public class Student extends Person {
 		this.studentCourse = studentCourse;
 	}
 
-	public Date getEntryDate() {
-		return entryDate;
+	public Entry getEntry() {
+		return entry;
 	}
 
-	public void setEntryDate(Date entryDate) {
-		this.entryDate = entryDate;
+	public void setEntry(Entry entry) {
+		this.entry = entry;
 	}
 }
