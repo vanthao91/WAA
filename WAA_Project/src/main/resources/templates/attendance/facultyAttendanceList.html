@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <span style="font-size: 1.5em">List of Customers</span>
+        <span style="float:right;">
+                <a class="btn btn-outline-success btn-lg" href="/customers/new">Register New Faculty</a>
+            </span>
+    </div>
+    <p>&nbsp;</p>
+    <table class="table table-hover">
+        <thead>
+        <tr >
+            <th scope="col">#</th>
+            <th scope="col">Student ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">percentage</th>
+            <th scope="col">Extra Point</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="attendance,iterStat : ${attendances}" th:class="${iterStat.odd}? 'odd'">
+            <th scope="row" th:text="${iterStat.count}"></th>
+            <td th:text="${attendance}"></td>
+            <td th:text="${attendance}"></td>
+            <td th:text="${attendance}"></td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
