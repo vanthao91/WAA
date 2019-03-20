@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.domain.AdminReportView;
+import com.example.demo.domain.Block;
 import com.example.demo.domain.Entry;
 import com.example.demo.domain.MeditationRecord;
+import com.example.demo.domain.Person;
 import com.example.demo.domain.Student;
+import com.example.demo.service.BlockService;
 import com.example.demo.service.BlockSessionService;
 import com.example.demo.service.EntryService;
 import com.example.demo.service.MeditationRecordService;
@@ -32,6 +35,9 @@ public class ReportController {
 	
 	@Autowired
 	private BlockSessionService blockSessionService;
+	
+	@Autowired
+	private BlockService blockService;
 	
 	@GetMapping("/admin/report")
 	public String getAdminReportForm(@ModelAttribute("newEntry") Entry entry, Model model) {
@@ -72,4 +78,16 @@ public class ReportController {
 		return "adminReport";
 	}
 	
+	@GetMapping("/student/report")
+	public String getStudentReportForm(@ModelAttribute("newBlock") Block block, Model model) {
+		Person person = (Person) model.asMap().get("loggedPerson");
+		Student student;
+		if (person instanceof Student)
+		{
+			student = (Student) person;
+			model.addAttribute("blocks", blockService.getBlockByEntryDate(student.getEntry().getDateEntry()));
+		}
+		
+		return "studentReport";
+	}
 }

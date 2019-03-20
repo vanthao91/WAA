@@ -1,11 +1,13 @@
 package com.example.demo.serviceImpl;
 
+import com.example.demo.domain.Block;
 import com.example.demo.domain.BlocksToDisplay;
 import com.example.demo.repository.Blockrepository;
 import com.example.demo.service.BlockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -35,4 +37,10 @@ public class BlockServiceImp implements BlockService {
 
         return blockrepository.findAll();
     }
+
+	@Override
+	public List<Block> getBlockByEntryDate(Date entryDate) {
+		// TODO Auto-generated method stub
+		return blockrepository.getBlockByEntryDate(entryDate);
+	}
 }

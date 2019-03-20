@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Student Report</title>
 </head>
 <body>
+	This is the Student view attendance info
 
+	<form id="studentReport" action="#" th:action="@{/student/report}"
+		th:object="${newBlock}" method="post">
+		<p>
+			<label>Block: </label> <select id="dropBlock" size="1"
+				th:field="*{id}">
+				<option th:each="block : ${blocks}" th:value="${block.id}"
+					th:text="${block.blockName}"></option>
+			</select>
+		</p>
+
+		<button class="goReportControl" type="Submit">Get data</button>
+	</form>
+	<br />
+	<table class="table table-striped">
+		<tr>
+			<th>Date</th>
+			<th>Present</th>
+		</tr>
+		<!-- <tr th:each="report : ${reports}">
+			<td th:text="${report.date}"></td>
+			<td th:text="${report.present}"></td>
+		</tr> -->
+	</table>
+	<br />
+
+	<form th:action="@{/home}" method="get">
+		<button class="goHome" type="Submit">Go to Home page</button>
+	</form>
 </body>
 </html>

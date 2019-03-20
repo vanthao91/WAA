@@ -34,6 +34,11 @@ public class PersonServiceImpl implements PersonService {
 //		}
 		return 	(result != null && !result.isEmpty() ) ? result.get(0) : null;
 	}
+	@Override
+	public Person findPersonById(Integer id) {
+		// TODO Auto-generated method stub
+		return personRepository.getOne(id);
+	}
 
 
 }
