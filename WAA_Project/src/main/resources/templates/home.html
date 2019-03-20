@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Home</title>
 </head>
 <body>
-	Log in success..... This is home page
-	
-	<h3>
+<!-- <div class="col-md-6 col-md-offset-3" id="home"> -->
+<div class="container">
+		<h1>
 		<span class="text-success" th:utext="${user}"></span>
-	</h3>
-
-	<h4>
+		</h1>
+		<p>
 		<span class="text-success" th:utext="${messageRole}"></span>
-	</h4>
-
-	<form th:action = "@{/importFile}" method = "get">
-		<button class = "goImportFile" type = "Submit">Import File</button>
-	</form>
-	<form th:action = "@{/admin/registration}" method = "get">
-		<button class = "goRegistration" type = "Submit">Registration</button>
-	</form>
-	<form th:action = "@{/admin/report}" method = "get">
-		<button class = "goAdminReport" type = "Submit">Admin Report</button>
-	</form>
-	<form th:action = "@{/faculty/report}" method = "get">
-		<button class = "goFacultyReport" type = "Submit">Faculty Report</button>
-	</form>
-	<form th:action = "@{/student/report}" method = "get">
-		<button class = "goStudentReport" type = "Submit">Student Report</button>
-	</form>
+		</p>
+	<table class="table">
+    <thead>
+      <tr>
+        <th>Admin</th>
+        <th>Faculty</th>
+        <th>Student</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><form th:action = "@{/importFile}" method = "get">
+			<button type="submit" class="btn btn-link btn-sm">Import File</button>
+		</form></td>
+        <td><form th:action = "@{/faculty/report}" method = "get">
+		<button class = "btn btn-link btn-sm" type = "Submit">Faculty Report</button>
+	</form></td>
+        <td><form th:action = "@{/student/report}" method = "get">
+		<button class = "btn btn-link btn-sm" type = "Submit">Student Report</button>
+	</form></td>
+      </tr>
+      <tr>
+        <td><form th:action = "@{/admin/registration}" method = "get">
+			<button type="submit" class="btn btn-link btn-sm">Registration New User</button>
+		</form></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><form th:action = "@{/admin/report}" method = "get">
+			<button type="submit" class="btn btn-link btn-sm">Admin Report</button>
+		</form></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+		
+		
+		
+		
 	<form th:action="@{/logout}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Log out</button>
+		<button class="btn btn-lg" type="Submit">Log out</button>
 	</form>
-
+</div>
 </body>
 </html>
