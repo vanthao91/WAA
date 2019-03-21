@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.example.demo.domain.AdminReportView;
 import com.example.demo.domain.Block;
 import com.example.demo.domain.BlockSession;
+import com.example.demo.domain.Course_Block_Faculty;
 import com.example.demo.domain.Entry;
+import com.example.demo.domain.Faculty;
 import com.example.demo.domain.MeditationRecord;
 import com.example.demo.domain.Person;
 import com.example.demo.domain.Student;
 import com.example.demo.domain.StudentReportView;
 import com.example.demo.service.BlockService;
 import com.example.demo.service.BlockSessionService;
+import com.example.demo.service.CourseBlockFacultyService;
 import com.example.demo.service.EntryService;
 import com.example.demo.service.MeditationRecordService;
 
@@ -41,6 +44,9 @@ public class ReportController {
 	
 	@Autowired
 	private BlockService blockService;
+	
+	@Autowired
+	private CourseBlockFacultyService courseBlockFacultyService;
 	
 	DecimalFormat myFormatter = new DecimalFormat("###.#");
 	SimpleDateFormat dateFormatter = new SimpleDateFormat( "yyyy-MM-dd");
@@ -155,4 +161,55 @@ public class ReportController {
 		}
 		return "studentReport";
 	}
+	
+	@GetMapping("/faculty/report")
+	public String getFacultyReportForm(@ModelAttribute("newCourseBlock") Course_Block_Faculty courseBlock, Model model) {
+		Person person = (Person) model.asMap().get("loggedPerson");
+		Faculty faculty;
+		if (person instanceof Faculty)
+		{
+			faculty = (Faculty) person;
+			model.addAttribute("courseBlocks", courseBlockFacultyService.findByFaculty(faculty));
+		}
+		return "facultyReport";
+	}
+	
+	@PostMapping("/faculty/report")
+	public String getListStudent(@ModelAttribute("newCourseBlock") Course_Block_Faculty courseBlock, Model model) {
+		courseBlock = courseBlockFacultyService.getById(courseBlock.getId());		
+		List<MeditationRecord> listRecord = meditationRecordService.findStudentByBlock(courseBlock.getBlock().getId());
+		List<AdminReportView> reports = new ArrayList<AdminReportView>();
+		
+		Person person = (Person) model.asMap().get("loggedPerson");
+		Faculty faculty;
+		if (person instanceof Faculty)
+		{
+			faculty = (Faculty) person;
+			model.addAttribute("courseBlocks", courseBlockFacultyService.findByFaculty(faculty));
+		}
+
+		List<Student> listStudent = listRecord.stream().map(a -> a.getStudent()).distinct().collect(Collectors.toList());
+		AdminReportView item;
+		Double totalSessionsAttended = (double) 0;
+		Double totalSessionsPossible = (double) 0;
+		for (Student student : listStudent)
+		{
+			item = new AdminReportView();
+			List<MeditationRecord> listAttendedByStudent = listRecord.stream().filter(a -> a.getStudent() == student).collect(Collectors.toList());
+			totalSessionsAttended = Double.valueOf(listAttendedByStudent.size());
+			totalSessionsPossible = Double.valueOf(blockSessionService.findByBlock(courseBlock.getBlock()).size());
+			item.setStudent(student);
+			item.setTotalSessionsAttended(totalSessionsAttended);
+			item.setTotalSessionsPossible(totalSessionsPossible);
+			item.setPercent(myFormatter.format(totalSessionsAttended / totalSessionsPossible * 100));
+			item.setExtraPoint(totalSessionsAttended >= 20 ? 1.5 : totalSessionsAttended >= 18 ? 1 : totalSessionsAttended >= 16 ? 0.5 : 0);
+			reports.add(item);
+		}
+		
+		model.addAttribute("reports", reports);
+		
+		return "facultyReport";
+	}
+	
+	
 }

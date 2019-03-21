@@ -46,4 +46,10 @@ public class MeditationRecordServiceImpl implements MeditationRecordService {
 		return meditationRecordRepository.findByBlockSessionAndStudent(blockSession, student);
 	}
 
+	@Override
+	public List<MeditationRecord> findStudentByBlock(Integer blockID) {
+		// TODO Auto-generated method stub
+		return meditationRecordRepository.findStudentByBlock(blockID);
+	}
+
 }

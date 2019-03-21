@@ -5,6 +5,7 @@ public class AdminReportView {
 	private Double totalSessionsPossible;
 	private Double totalSessionsAttended;
 	private String percent;
+	private Double extraPoint;
 	
 	public Student getStudent() {
 		return student;
@@ -36,5 +37,13 @@ public class AdminReportView {
 
 	public void setPercent(String percent) {
 		this.percent = percent;
+	}
+
+	public Double getExtraPoint() {
+		return extraPoint;
+	}
+
+	public void setExtraPoint(Double extraPoint) {
+		this.extraPoint = extraPoint;
 	}
 }
