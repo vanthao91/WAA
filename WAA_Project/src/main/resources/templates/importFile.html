@@ -18,14 +18,20 @@
     <thead>
       <tr>
         <th>	
-        File to upload
+       Upload Meditation Record
 		
 		</th>
+		<th>Upload Student Info</th>
       </tr>
       </thead>
       <tbody>
       	<tr>
       	<td><form method="POST" enctype="multipart/form-data" th:action="@{/importFile}" th:object="${textFile}">
+		<input type="file" name="file" th:field="*{file}"  />
+				<p th:if="${#fields.hasErrors('file')}" th:errors="*{file}" th:errorclass="fieldError"></p>
+				<button type="submit" class="btn btn-link btn-sm" >Upload</button>
+		</form></td>
+		<td><form method="POST" enctype="multipart/form-data" th:action="@{/importFile}" th:object="${textFile}">
 		<input type="file" name="file" th:field="*{file}"  />
 				<p th:if="${#fields.hasErrors('file')}" th:errors="*{file}" th:errorclass="fieldError"></p>
 				<button type="submit" class="btn btn-link btn-sm" >Upload</button>
