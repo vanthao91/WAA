@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.BlocksToDisplay;
 import com.example.demo.domain.CourseToDisplay;
 import com.example.demo.service.AttendanceService;
-import com.example.demo.service.BlockService;
+import com.example.demo.service.BlocksToDisplayService;
 import com.example.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.List;
 public class StudentController {
 
 	@Autowired
-	private BlockService blockService;
+	private BlocksToDisplayService blockService;
 
 	@Autowired
 	private CourseService courseService;

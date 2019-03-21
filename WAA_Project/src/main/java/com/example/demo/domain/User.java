@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	@JsonIgnore
+	//@JsonIgnore
 	private Integer id;
 	
 	@NotBlank

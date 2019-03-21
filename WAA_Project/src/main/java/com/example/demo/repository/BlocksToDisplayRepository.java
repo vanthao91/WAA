@@ -11,11 +11,6 @@ import com.example.demo.domain.Block;
 import com.example.demo.domain.BlocksToDisplay;
 
 @Repository
-public interface Blockrepository extends JpaRepository<BlocksToDisplay, Long>{
+public interface BlocksToDisplayRepository extends JpaRepository<BlocksToDisplay, Long>{
 
-	@Query(value="select distinct b.* "
-			+ "from Block b"
-			+ "inner join block_session bs on b.id = bs.block_id"
-			+ "where bs.session >= :entryDate", nativeQuery=true)
-	List<Block> getBlockByEntryDate(Date entryDate);
 }

@@ -12,7 +12,19 @@
 </head>
 <body>
 	This is the Student view attendance info
-
+<br /><br />
+	<fieldset>
+		<legend>Cumulative attendance info</legend>
+		<h4>
+			<label>Total sessions possible: </label> <span class="text-success"
+				th:utext="${totalSessionsPossible}"></span> <br/> 
+				<label>Total sessions attended: </label> <span class="text-success"
+				th:utext="${totalSessionsAttended}"></span> <br/> 
+				<label>Percent attendance: </label> <span class="text-success"
+				th:utext="${percentTotal}"></span>
+		</h4>
+	</fieldset>
+	<br />
 	<form id="studentReport" action="#" th:action="@{/student/report}"
 		th:object="${newBlock}" method="post">
 		<p>
@@ -20,21 +32,29 @@
 				th:field="*{id}">
 				<option th:each="block : ${blocks}" th:value="${block.id}"
 					th:text="${block.blockName}"></option>
-			</select>
+			</select> 
 		</p>
-
 		<button class="goReportControl" type="Submit">Get data</button>
 	</form>
-	<br />
+
+	<label>Sessions in block: </label>
+	<span class="text-success" th:utext="${sessions}"></span> <br />
+	<label>Days present: </label>
+	<span class="text-success" th:utext="${daysPresent}"></span> <br />
+	<label>Percentage attended: </label>
+	<span class="text-success" th:utext="${percent}"></span> <br />
+	<label>Extra credit points: </label>
+	<span class="text-success" th:utext="${extraCredit}"></span>
+	<br/>
 	<table class="table table-striped">
 		<tr>
 			<th>Date</th>
 			<th>Present</th>
 		</tr>
-		<!-- <tr th:each="report : ${reports}">
-			<td th:text="${report.date}"></td>
+		<tr th:each="report : ${reports}">
+			<td th:text="${report.session}"></td>
 			<td th:text="${report.present}"></td>
-		</tr> -->
+		</tr>
 	</table>
 	<br />
 
