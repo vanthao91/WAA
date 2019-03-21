@@ -2,8 +2,8 @@ package com.example.demo.serviceImpl;
 
 import com.example.demo.domain.Block;
 import com.example.demo.domain.BlocksToDisplay;
-import com.example.demo.repository.Blockrepository;
-import com.example.demo.service.BlockService;
+import com.example.demo.repository.BlocksToDisplayRepository;
+import com.example.demo.service.BlocksToDisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,10 @@ import java.util.List;
 
 
 @Service
-public class BlockServiceImp implements BlockService {
+public class BlocksToDisplayServiceImp implements BlocksToDisplayService {
 
     @Autowired
-    private Blockrepository blockrepository;
+    private BlocksToDisplayRepository blockrepository;
 
     @Override
     public BlocksToDisplay findByUsername(String blockName) {
@@ -37,10 +37,4 @@ public class BlockServiceImp implements BlockService {
 
         return blockrepository.findAll();
     }
-
-	@Override
-	public List<Block> getBlockByEntryDate(Date entryDate) {
-		// TODO Auto-generated method stub
-		return blockrepository.getBlockByEntryDate(entryDate);
-	}
 }

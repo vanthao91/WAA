@@ -4,7 +4,7 @@ import com.example.demo.domain.Attendance;
 import com.example.demo.domain.BlocksToDisplay;
 import com.example.demo.domain.CourseToDisplay;
 import com.example.demo.service.AttendanceService;
-import com.example.demo.service.BlockService;
+import com.example.demo.service.BlocksToDisplayService;
 import com.example.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,7 +20,7 @@ import java.util.List;
 public class FacultyController {
 
 	@Autowired
-	private BlockService blockService;
+	private BlocksToDisplayService blockService;
 
 	@Autowired
 	private CourseService courseService;

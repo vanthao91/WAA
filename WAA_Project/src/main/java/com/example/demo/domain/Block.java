@@ -15,7 +15,7 @@ public class Block {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Integer id;
-	
+
 	private String blockName;
 	private Date beginDate;
 	private Date endDate;
@@ -64,5 +64,13 @@ public class Block {
 
 	public void setBlockSession(Set<BlockSession> blockSession) {
 		this.blockSession = blockSession;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
