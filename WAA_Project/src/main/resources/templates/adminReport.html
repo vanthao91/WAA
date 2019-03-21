@@ -2,11 +2,17 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+    <meta charset="ISO-8859-1">
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <title>Admin Report</title>
+      </head>
 <body>
-	This is the Generate Attendance report by entry
+<div class="container text-center">
+	<h2 class = "text-primary">This is the Generate Attendance report by entry</h2>
 
 	<form id="adminReport" action="#" th:action="@{/admin/report}"
 		th:object="${newEntry}" method="post">
@@ -18,8 +24,9 @@
 			</select>
 		</p>
 
-		<button class="goReportControl" type="Submit">Get data</button>
+		<button class="btn btn-default btn-lgtext-center" type="Submit">Get data</button><br><br>
 	</form>
+	<br><br>
 	<br />
 	<table class="table table-striped">
 		<tr>
@@ -39,8 +46,11 @@
 	</table>
 	<br />
 
-	<form th:action="@{/home}" method="get">
-		<button class="goHome" type="Submit">Go to Home page</button>
-	</form>
+		<div class="col-md-8 col-sm-offset-2 text-center">
+		<form th:action="@{/home}" method="get">
+		<button class="btn btn-link btn-lg" type="Submit">Go To Home Page</button>
+		</form>
+		</div>
+</div>
 </body>
 </html>
