@@ -17,6 +17,14 @@ public class Course_Block_Faculty {
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Integer id;
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "course_id")
 	private Course course;
@@ -62,5 +70,9 @@ public class Course_Block_Faculty {
 
 	public void setStudentCourse(Set<Student_Course> studentCourse) {
 		this.studentCourse = studentCourse;
+	}
+	
+	public String getStringName() {
+		return block.getBlockName() + " - " + course.getCourseName();
 	}
 }

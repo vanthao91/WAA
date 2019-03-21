@@ -46,4 +46,9 @@ public interface MeditationRecordRepository extends JpaRepository<MeditationReco
 	
 	MeditationRecord findByBlockSessionAndStudent(BlockSession blockSession, Student student);
 	
+	@Query(value="select m.* "
+			+ "from meditation_record m "
+			+ "inner join block_session bs on m.block_session_id = bs.id "
+			+ "where bs.block_id = :blockID", nativeQuery=true)
+	List<MeditationRecord> findStudentByBlock(Integer blockID);
 }

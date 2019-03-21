@@ -12,4 +12,5 @@ public interface MeditationRecordService {
 	Double countByStudentAndBlock(Integer studentID, Integer blockID);
 	Double countByStudent(Integer studentID);
 	MeditationRecord findByBlockSessionAndStudent(BlockSession blockSession, Student student);
+	List<MeditationRecord> findStudentByBlock(Integer blockID);
 }
