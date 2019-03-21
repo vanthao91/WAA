@@ -11,7 +11,8 @@
 <title>Student Report</title>
 </head>
 <body>
-	This is the Student view attendance info
+<div class="container text-center">
+	<h2 class = "text-primary">This is the Student view attendance info</h2>
 <br /><br />
 	<fieldset>
 		<legend>Cumulative attendance info</legend>
@@ -34,7 +35,7 @@
 					th:text="${block.blockName}"></option>
 			</select> 
 		</p>
-		<button class="goReportControl" type="Submit">Get data</button>
+		<button class="btn btn-default btn-lgtext-center" type="Submit">Get data</button><br><br>
 	</form>
 
 	<label>Sessions in block: </label>
@@ -48,8 +49,8 @@
 	<br/>
 	<table class="table table-striped">
 		<tr>
-			<th>Date</th>
-			<th>Present</th>
+			<th class="text-center">Date</th>
+			<th class="text-center">Present</th>
 		</tr>
 		<tr th:each="report : ${reports}">
 			<td th:text="${report.session}"></td>
@@ -58,8 +59,11 @@
 	</table>
 	<br />
 
-	<form th:action="@{/home}" method="get">
-		<button class="goHome" type="Submit">Go to Home page</button>
-	</form>
+			<div class="col-md-8 col-sm-offset-2 text-center">
+		<form th:action="@{/home}" method="get">
+		<button class="btn btn-link btn-lg" type="Submit">Go To Home Page</button>
+		</form>
+		</div>
+	</div>
 </body>
 </html>
