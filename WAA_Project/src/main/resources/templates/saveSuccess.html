@@ -2,17 +2,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-Create User successfully...
+<div class="container text-center">
+<h2 class = "text-primary">Create User successfully...</h2>
 
-	<form th:action = "@{/home}" method = "get">
-		<button class = "goHome" type = "Submit">Go to Home page</button>
+	<div class="col-md-8 col-sm-offset-2 text-center">
+		<form th:action="@{/home}" method="get">
+		<button class="btn btn-link btn-lg" type="Submit">Go To Home Page</button>
+		</form>
+		</div>
+			<div class="col-md-8 col-sm-offset-2 text-center">
+		<form th:action="@{/logout}" method="get">
+		<button class="btn btn-lg" type="Submit" >Log out</button>
 	</form>
-	
-	<form th:action="@{/logout}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Log out</button>
-	</form>
+	</div>
+	</div>
 </body>
 </html>

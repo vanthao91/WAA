@@ -27,8 +27,8 @@ public class WelcomeInterceptor extends HandlerInterceptorAdapter {
 		Principal principal = request.getUserPrincipal();
 		if (principal != null) {
 			if (request.isUserInRole("ROLE_ADMIN"))
-				messageRole = "YOU HAVE FULL PERMIT!!!";
-			else
+				messageRole = "YOU HAVE THE ADMIN ROLE!!!";
+			else 
 				messageRole = "YOU CAN ONLY SEE THE REPORT!!!";
 		}
 
